@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle dark mode</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --A-dark: #222831;
+            --A-light: #393e46;
+            --A-primary: #00adb5;
+            --A-accent: #3f5efb;
+            --A-white: #eeeeee;
+
+            --B-dark: #1f1e2e;
+            --B-light: #272a3d;
+            --B-primary: #e14ecc;
+            --B-accent: #be54f2;
+            --B-white: #feffff;
+
+            --C-dark: #E9ECF3;
+            --C-light: #ffffff;
+            --C-primary: #0047fe;
+            --C-accent: #00f7ff;
+            
+            --Blue: #2b8be2;
+        }
+        body{
+            transition: all ease-in-out .3s;
+            font-family: 'Nunito', sans-serif;
+        }
+        nav{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        h1,h2,h3,h4{
+            margin: 0;
+        }
+        button{
+            border-radius: 18px;
+            border: 1px rgb(179, 179, 179) solid;
+            padding: 7px 12px;
+            box-shadow: inset 0 0 0 0 var(--Blue);
+            transition: all ease-in-out .3s;
+            outline: none;
+            outline-width: 0;
+           
+        }
+        button:hover{
+            box-shadow: inset 0 0 20px 18px var(--Blue);
+        }
+
+        .ATheme{
+            background: var(--A-dark);
+            color: var(--A-white);
+        }
+        .ATheme .card{
+            background: var(--A-light);
+            box-shadow: rgba(0, 0, 0, 0.34) 0px 2px 8px 0px;
+        }
+        .ATheme .card .card__top i{
+            background: linear-gradient(90deg, var(--A-accent) 0%,var(--A-primary) 100% );
+        }
+        .ATheme .card .card__top h4{
+            color: var(--A-white);
+        }
+        .ATheme .card .card__bottom p{
+            color: var(--A-white);
+        }
+
+
+        .BTheme{
+            background: var(--B-dark);
+            color: var(--B-white);
+        }
+        .BTheme .card{
+            background: var(--B-light);
+            box-shadow: rgba(0, 0, 0, 0.34) 0px 2px 8px 0px;
+        }
+        .BTheme .card .card__top i{
+            background: linear-gradient(90deg, var(--B-accent) 0%,var(--B-primary) 100% );
+            color: var(--B-white);
+        }
+        .BTheme .card .card__top h4{
+            color: #ffffff6f;
+        }
+        .BTheme .card .card__bottom p{
+            color: var(--B-white);
+        }
+
+        .CTheme{
+            background: var(--C-dark);
+            color: var(--C-white);
+        }
+        .CTheme .card{
+            background: var(--C-light);
+            box-shadow: rgba(0, 0, 0, 0.34) 0px 2px 8px 0px;
+        }
+        .CTheme .card .card__top i{
+            background: linear-gradient(90deg, var(--C-primary) 0%,var(--C-accent) 100% );
+            color: var(--C-light);
+        }
+        .CTheme .card .card__top h4{
+            color: var(--C-primary);
+        }
+        .CTheme .card .card__bottom p{
+            color: var(--C-white);
+        }
+
+
+        .wrapper{
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            place-items: center;
+        }
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .card{
+            margin: 20px;
+            padding: 20px;
+            border-radius: 18px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            min-width: 250px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card__top{
+            display: flex;
+            align-items: center;
+            align-items: flex-start;
+            flex: 1;
+        }
+        .card__top i{
+            margin-right: 12px;
+            border-radius: 999px;
+            background:linear-gradient(90deg, #89f7fe 0%,#66a6ff 100% );
+            padding: 7px;
+        }
+        .card__top h4{
+            color: #2525256f;
+        }
+        .card__bottom h2{
+           font-size: 3rem;
+        }
+        .card__bottom p{
+            color: #2525256f;
+        }
+       
+
+    </style>
+</head>
+<body id="toggle">
+    <nav>
+        <h4>Dark/Light Mode</h4>
+        <div class="right">
+            <button onclick="ATheme()">a theme</button>
+            <button onclick="BTheme()">b theme</button>
+            <button onclick="CTheme()">c theme</button>
+        </div>
+        
+    </nav>
+    <div class="wrapper">
+        <div class="container">
+
+            <div class="card">
+                <div class="card__top">
+                    <i class="fas fa-trophy"></i>
+                    <h4>Score</h4>
+                </div>
+                <div class="card__bottom">
+                    <h2>35</h2>
+                    <p>Reward Points</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card__top">
+                    <i class="fas fa-trophy"></i>
+                    <h4>Certificates</h4>
+                </div>
+                <div class="card__bottom">
+                    <h2>2</h2>
+                    <p>Advanced Courses</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card__top">
+                    <i class="fas fa-trophy"></i>
+                    <h4>Progress</h4>
+                </div>
+                <div class="card__bottom">
+                    <h2>30%</h2>
+                    <p>3 days left</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card__top">
+                    <i class="fas fa-trophy"></i>
+                    <h4>Day Streak</h4>
+                </div>
+                <div class="card__bottom">
+                    <h2>5</h2>
+                    <p>44 hrs</p>
+                </div>
+            </div>
+
+        </div><!--container-->
+    </div><!--wrapper-->
+
+
+
+
+
+
+    <script>
+        // function myFunction(){
+        //     document.getElementById("toggle").classList.toggle("change")
+        // }
+        function ATheme(){
+            document.getElementById("toggle").classList.toggle("ATheme")
+            document.getElementById("toggle").classList.remove("BTheme");
+           document.getElementById("toggle").classList.remove("CTheme");
+        }
+        function BTheme(){
+            document.getElementById("toggle").classList.toggle("BTheme")
+           document.getElementById("toggle").classList.remove("ATheme");
+           document.getElementById("toggle").classList.remove("CTheme");
+        }
+        function CTheme(){
+            document.getElementById("toggle").classList.toggle("CTheme")
+           document.getElementById("toggle").classList.remove("ATheme");
+           document.getElementById("toggle").classList.remove("BTheme");
+        }
+    </script>
+</body>
+</html>
